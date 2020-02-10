@@ -36,7 +36,7 @@ export const fields = [
       id: 'firstName',
       label: 'First Name',
       name: 'firstName',
-      autoComplete: 'off',
+      autoComplete: 'nope',
     },
   },
   {
@@ -44,7 +44,7 @@ export const fields = [
       id: 'lastName',
       label: 'Last Name',
       name: 'lastName',
-      autoComplete: 'off',
+      autoComplete: 'nope',
     },
   },
   {
@@ -53,7 +53,7 @@ export const fields = [
       label: 'Password',
       name: 'password',
       type: 'password',
-      autoComplete: 'off',
+      autoComplete: 'nope',
     },
   },
   {
@@ -62,7 +62,7 @@ export const fields = [
       label: 'Confirm Password',
       name: 'confirmPassword',
       type: 'password',
-      autoComplete: 'off',
+      autoComplete: 'nope',
     },
   },
 ].map(field => ({ ...field, component: TextField }))
