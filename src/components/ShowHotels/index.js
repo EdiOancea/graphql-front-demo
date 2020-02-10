@@ -2,7 +2,9 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
+import { Container } from '@material-ui/core';
 
+import { isAuthError } from 'helpers';
 import Hotel from 'components/Hotel';
 import { fragments as showHotelFragments } from 'components/ShowHotel';
 import { Wrapper, Title } from './styles';
@@ -44,19 +46,24 @@ const ShowHotels = () => {
   const history = useHistory();
   const { loading, error, data } = useQuery(GET_HOTELS);
 
+  if (isAuthError(error)) {
+    history.push('/signin');
+  }
+
   return !loading && !error && (
-    <Wrapper>
-      <Title>Hotels</Title>
-      {data.hotels.edges.map(({ node }) => (
-        <Hotel
-          {...{
-            ...node,
-            key: node.id,
-          }}
-        />
-      ))}
-      <button onClick={() => history.push('/add-hotel-form')}>Add Hotel</button>
-    </Wrapper>
+    <Container component="main" maxWidth="sm">
+      <Wrapper>
+        <Title>Listings</Title>
+        {data.hotels.edges.map(({ node }) => (
+          <Hotel
+            {...{
+              ...node,
+              key: node.id,
+            }}
+          />
+        ))}
+      </Wrapper>
+    </Container>
   );
 };
 

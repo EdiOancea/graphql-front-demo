@@ -22,7 +22,7 @@ export const fields = [
       label: 'Password',
       name: 'password',
       type: 'password',
-      autoComplete: 'off',
+      autoComplete: 'nope',
     },
   },
 ].map(field => ({ ...field, component: TextField }))
